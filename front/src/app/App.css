@@ -1,6 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+    --primary: hsl(0, 0%, 4%);
+    --secondary: hsl(0, 0%, 96%);
+    --accent: hsl(0, 100%, 63%);
+    --pink: hsl(350, 100%, 88%);
+    --blue: hsl(197, 71%, 73%);
+    --border: hsl(0, 0%, 16%);
+    --hover: hsl(0, 0%, 10%);
+    --text-primary: hsl(0, 0%, 100%);
+    --text-secondary: hsl(0, 0%, 63%);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background: cornflowerblue;
-    font-family: "Segoe UI";
+    font-family: "JetBrains Mono", monospace;
+    background: var(--primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+main {
+    min-height: 70vh;
 }
 
 

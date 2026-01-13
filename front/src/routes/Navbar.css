@@ -1,0 +1,153 @@
+.nav {
+    display: flex;
+    height: 90px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    background-color: var(--blue);
+}
+
+.nav__logo {
+    color: var(--primary);
+    cursor: pointer;
+    margin-left: 10;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.nav__menu {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 10px;
+    list-style: none;
+    text-align: center;
+    width: 70vw;
+    justify-content: end;
+    margin-right: 2rem;
+}
+
+.nav__item {
+    display: grid;
+    place-items: center;
+    height: 80px;
+}
+
+.nav__links {
+    color: var(--primary);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.nav__links:hover {
+    background-color: var(--pink);
+    color: var(--primary);
+    border-radius: .4rem;
+    transition: all 0.3s ease-out;
+}
+
+/* NAV MENU BUTTON */
+.nav__button {
+    display: flex;
+    align-items: center;
+    padding: 1.3rem;
+    border: none;
+    background: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+}
+
+.nav__burger {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav__line {
+    width: 50px;
+    height: 7px;
+    background-color: var(--primary);
+    display: block;
+    margin: 9px auto;
+    transition: all 0.6s ease-in-out;
+}
+
+.nav__burger.open {
+    transition: all 0.3s ease-in-out;
+    transition-delay: 0.7s;
+    transform: rotate(135deg);
+}
+
+.nav__burger.open .nav__line:nth-child(1),
+.nav__burger.open .nav__line:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.nav__burger.open .nav__line:nth-child(2) {
+    width: 0;
+}
+
+.nav__burger.open .nav__line:nth-child(1) {
+    transition-delay: 0.4s;
+    transform: translateY(15px);
+}
+
+.nav__burger.open .nav__line:nth-child(3) {
+    transition-delay: 0.5s;
+    transform: translateY(-15px) rotate(270deg);
+}
+
+/* SIDEBAR AND MEDIA QUERIES */
+@media (min-width: 650px) {
+    .nav__button {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .nav {
+        justify-content: flex-end;
+    }
+
+    .nav__logo {
+        position: absolute;
+        top: left;
+        left: 0;
+    }
+
+    .nav__menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 90px;
+        left: -100%;
+        opacity: 1;
+        transition: all 0.7s ease;
+    }
+
+    .nav__menu.active {
+        background: var(--blue);
+        left: 0;
+        opacity: 1;
+        transition: all 0.7s ease;
+        z-index: 1;
+    }
+
+    .nav__links {
+        text-align: center;
+        padding: 1.3rem;
+        width: 100%;
+        display: table;
+    }
+
+    .nav__links:hover {
+        background: var(--pink);
+        border-radius: 0;
+    }
+}
+
+
+
