@@ -9,5 +9,11 @@ export interface IProd {
     updated_at: string
 };
 
+export interface IProduct extends IProd {
+    success: boolean,
+    count: number,
+    data: IProd[]
+};
+
 
 

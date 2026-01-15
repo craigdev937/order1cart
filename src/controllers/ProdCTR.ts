@@ -13,7 +13,11 @@ class ProdClass {
                 P.image, P.price, P.stock];
             const product = await dBase.query<ProdSType>(QRY, values);
             res.status(res.statusCode)
-                .json(product.rows[0]);
+                .json({
+                    success: true,
+                    message: "Product created Successfully",
+                    data: product.rows[0]
+                });
         } catch (error) {
             res.status(res.statusCode)
                 .json({
@@ -31,7 +35,11 @@ class ProdClass {
             const QRY = `SELECT * FROM products ORDER BY id ASC`;
             const products = await dBase.query<ProdSType[]>(QRY);
             res.status(res.statusCode)
-                .json(products.rows);
+                .json({
+                    success: true,
+                    count: products.rows.length,
+                    data: products.rows
+                });
         } catch (error) {
             res.status(res.statusCode)
                 .json({
@@ -51,7 +59,10 @@ class ProdClass {
             const values = [id];
             const product = await dBase.query<ProdSType>(QRY, values);
             res.status(res.statusCode)
-                .json(product.rows[0]);
+                .json({
+                    success: true,
+                    data: product.rows[0]
+                });
         } catch (error) {
             res.status(res.statusCode)
                 .json({
@@ -76,7 +87,11 @@ class ProdClass {
                 P.image, P.price, P.stock, id];
             const product = await dBase.query<ProdSType>(QRY, values);
             res.status(res.statusCode)
-                .json(product.rows[0]);
+                .json({
+                    success: true,
+                    message: "Product Updated!",
+                    data: product.rows[0]
+                });
         } catch (error) {
             res.status(res.statusCode)
                 .json({
@@ -97,7 +112,11 @@ class ProdClass {
             const deleteProduct = await dBase.query<ProdSType>(QRY, values);
             res
                 .status(res.statusCode)
-                .json("The Product was Deleted!");
+                .json({
+                    success: true,
+                    message: "The Product was Deleted!",
+                    data: deleteProduct
+                });
         } catch (error) {
             res.status(res.statusCode)
                 .json({

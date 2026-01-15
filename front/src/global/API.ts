@@ -1,6 +1,6 @@
 import { createApi, 
     fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IProd } from "../models/Interfaces";
+import { IProd, IProduct } from "../models/Interfaces";
 const URL = "http://localhost:9000/api/products";
 
 export const API = createApi({
@@ -8,7 +8,7 @@ export const API = createApi({
     tagTypes: ["Products"],
     baseQuery: fetchBaseQuery({ baseUrl: `${URL}` }),
     endpoints: (builder) => ({
-        get: builder.query<IProd[], void>({
+        get: builder.query<IProduct, void>({
             query: () => ({
                 url: "/",
                 method: "GET"
