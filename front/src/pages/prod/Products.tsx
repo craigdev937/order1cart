@@ -33,33 +33,42 @@ export const Products = () => {
                                 className="prod__card"
                             >
                                 <section className="prod__header">
-                                    <div className="prod__name">
+                                    <aside className="prod__name">
                                         {prod.name}
-                                    </div>
+                                    </aside>
                                 </section>
                                 <section className="prod__info">
-                                    <div className="prod__description">
+                                    <aside className="prod__description">
                                         {prod.description}
-                                    </div>
-                                    <div className="prod__block">
+                                    </aside>
+                                    <aside className="prod__block">
                                         <div className="prod__price">
                                             Price: ${prod.price}
                                         </div>
                                         <div className="prod__stock">
                                             In-stock: {prod.stock}
                                         </div>
-                                    </div>
-                                    <div className="prod__image">
+                                    </aside>
+                                    <aside className="prod__image">
                                         <img 
                                             alt={prod.name}
                                             src={prod.image}  
                                         />
-                                    </div>
+                                    </aside>
                                 </section>                                
                                 <section className="prod__actions">
-                                    <button>View</button>
-                                    <button>Edit</button>
-                                    <button>Delete</button>
+                                    <button
+                                        className="btn btn__small btn__sec"
+                                        >View
+                                    </button>
+                                    <button
+                                        className="btn btn__small btn__sec"
+                                        >Edit
+                                    </button>
+                                    <button
+                                        className="btn btn__small btn__sec"
+                                        >Delete
+                                    </button>
                                 </section>
                             </aside>
                         ))}
