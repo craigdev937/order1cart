@@ -1,11 +1,9 @@
 import React from "react";
 import "./Products.css";
-import { useNavigate } from "react-router";
 import { API } from "../../global/API";
 import { Spinner } from "../../components/spin/Spinner";
 
 export const Products = () => {
-    const navigate = useNavigate();
     const { error, isLoading, data } = API.useGetQuery();
     const PR = data?.data;
 
@@ -37,6 +35,8 @@ export const Products = () => {
                                         {prod.name}
                                     </aside>
                                 </section>
+
+                                {/* CONTAINER QUERY FOR PROD__INFO SECTION */}
                                 <section className="prod__info">
                                     <aside className="prod__description">
                                         {prod.description}
@@ -55,7 +55,8 @@ export const Products = () => {
                                             src={prod.image}  
                                         />
                                     </aside>
-                                </section>                                
+                                </section>
+                                {/* CRUD BUTTONS FOR PROD__ACTIONS */}
                                 <section className="prod__actions">
                                     <button
                                         className="btn btn__small btn__sec"

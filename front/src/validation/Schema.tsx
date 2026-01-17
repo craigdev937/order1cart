@@ -8,7 +8,7 @@ export const ProdSchema = z.object({
         .min(1, "Description is required")
         .max(1000, "Description is too long"),
     image: z.string(),
-    price: z.number(),
+    price: z.string(),
     stock: z.number()
 });
 
