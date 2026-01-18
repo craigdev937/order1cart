@@ -14,6 +14,36 @@ export const API = createApi({
                 method: "GET"
             }),
             providesTags: ["Products"]
+        }),
+        one: builder.query<IProd, number>({
+            query: (id) => ({
+                url: `/${id}`,
+                method: "GET"
+            }),
+            providesTags: ["Products"]
+        }),
+        add: builder.mutation<IProd, IProd>({
+            query: (payload) => ({
+                url: "/",
+                method: "POST",
+                body: payload
+            }),
+            invalidatesTags: ["Products"]
+        }),
+        update: builder.mutation<IProd, IProd>({
+            query: ({id, ...payload}) => ({
+                url: `/${id}`,
+                method: "PUT",
+                body: payload
+            }),
+            invalidatesTags: ["Products"]
+        }),
+        delete: builder.mutation<void, number>({
+            query: (id) => ({
+                url: `/${id}`,
+                method: "DELETE"
+            }),
+            invalidatesTags: ["Products"]
         })
     })
 });

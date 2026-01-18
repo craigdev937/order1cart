@@ -3,6 +3,7 @@ import { createBrowserRouter,
     RouterProvider } from "react-router";
 import { NotFound } from "../components/NotFound";
 import { Navbar } from "./Navbar";
+import { AddProd } from "../containers/add/AddProd";
 import { Products } from "../pages/prod/Products";
 import { Customers } from "../pages/customers/Customers";
 
@@ -15,6 +16,10 @@ const RouteList = createBrowserRouter([
             {
                 path: "/",
                 element: <Products />
+            },
+            {
+                path: "/addprod",
+                element: <AddProd />
             },
             {
                 path: "/customers",

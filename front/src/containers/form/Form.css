@@ -1,0 +1,61 @@
+.form__container {
+    background: var(--hover);
+    border: 3px solid var(--border);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    animation: scaleIn 0.4s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.form__group {
+    margin-bottom: 1.5rem;
+}
+
+.form__group label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.form__group input {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--dark);
+    border: 2px solid var(--border);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.form__group input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.1);
+}
+
+.error {
+    color: var(--accent);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: block;
+    font-weight: 700;
+}
+
+
+
+
+

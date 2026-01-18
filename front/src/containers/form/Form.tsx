@@ -57,7 +57,9 @@ export const Form =
             </section>
             <section className="form__group">
                 <label htmlFor="stock">Stock</label>
-                <input id="stock" {...register("stock")} />
+                <input id="stock" {...register("stock", {
+                    valueAsNumber: true
+                })} />
                 {errors.stock && 
                     <span className="error"
                     >{errors.stock.message}
