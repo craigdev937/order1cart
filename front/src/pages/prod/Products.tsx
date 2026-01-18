@@ -26,6 +26,11 @@ export const Products = () => {
                 <Spinner />
             ) : (
                 <main className="prod__container">
+                    <button
+                            className="btn btn__small btn__sec"
+                            onClick={() => navigate("/addprod")}
+                            >Add Product
+                        </button>
                     <section className="prod__grid">
                         {PR && PR.map((prod) => (
                             <aside 
@@ -36,11 +41,6 @@ export const Products = () => {
                                     <aside className="prod__name">
                                         {prod.name}
                                     </aside>
-                                    <button
-                                        className="btn btn__small btn__sec"
-                                        onClick={() => navigate("/addprod")}
-                                        >Add Product
-                                    </button>
                                 </section>
 
                                 {/* CONTAINER QUERY FOR PROD__INFO SECTION */}

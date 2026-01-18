@@ -3,13 +3,15 @@ import { useNavigate } from "react-router";
 import { Form } from "../form/Form";
 import { API } from "../../global/API";
 import { IProd } from "../../models/Interfaces";
+import { ProdSType } from "../../validation/Schema";
 
 export const AddProd = () => {
     const navigate = useNavigate();
     const [addProduct] = API.useAddMutation();
 
-    const handleAdd = async (data: IProd) => {
+    const handleAdd = async (data: ProdSType) => {
         await addProduct(data);
+        console.log(data);
         navigate("/");
     };
 

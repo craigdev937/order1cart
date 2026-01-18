@@ -12,10 +12,11 @@ class ProdClass {
             const values = [P.name, P.description, 
                 P.image, P.price, P.stock];
             const product = await dBase.query<ProdSType>(QRY, values);
-            res.status(res.statusCode)
+            res
+                .status(res.statusCode)
                 .json({
                     success: true,
-                    message: "Product created Successfully",
+                    message: "Product Created!",
                     data: product.rows[0]
                 });
         } catch (error) {

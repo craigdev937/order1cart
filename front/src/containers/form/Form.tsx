@@ -2,21 +2,21 @@ import "./Form.css";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ProdSchema, ProdSType } from "../../validation/Schema"; 
-import { IProd } from "../../models/Interfaces";
+import { IData } from "../../models/Interfaces";
 
 type Props = {
     submitLabel?: string,
-    initialData?: IProd,
-    onSubmit: (data: IProd) => void
+    initialData?: ProdSType,
+    onSubmit: (data: IData) => void
 };
 
 export const Form = 
-({ submitLabel="Create", initialData, onSubmit }: Props) => {
+({ submitLabel = "Add Product", initialData, onSubmit }: Props) => {
     const { register, handleSubmit,
-        formState: { errors } } = useForm<ProdSType>({
-            defaultValues: initialData,
-            resolver: zodResolver(ProdSchema)
-        });
+    formState: { errors } } = useForm<ProdSType>({
+        defaultValues: initialData,
+        resolver: zodResolver(ProdSchema)
+    });
 
     return (
         <form 
@@ -24,7 +24,7 @@ export const Form =
             onSubmit={handleSubmit(onSubmit)}
         >
             <section className="form__group">
-                <label htmlFor="Name">Name</label>
+                <label htmlFor="name">Name</label>
                 <input id="name" {...register("name")} />
                 {errors.name && 
                     <span className="error"

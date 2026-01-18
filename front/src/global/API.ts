@@ -13,14 +13,19 @@ export const API = createApi({
                 url: "/",
                 method: "GET"
             }),
-            providesTags: ["Products"]
+            providesTags: (result) => result ? [
+                ...result.data.map(({ id }) => 
+                    ({ type: "Products" as const, id })),
+                { type: "Products", id: "LIST" },
+            ] : [{ type: "Products", id: "LIST" }]
         }),
         one: builder.query<IProd, number>({
             query: (id) => ({
                 url: `/${id}`,
                 method: "GET"
             }),
-            providesTags: ["Products"]
+            providesTags: (result, error, id) =>
+                [{ type: "Products", id }]
         }),
         add: builder.mutation<IProd, IProd>({
             query: (payload) => ({
@@ -28,7 +33,7 @@ export const API = createApi({
                 method: "POST",
                 body: payload
             }),
-            invalidatesTags: ["Products"]
+            invalidatesTags: [{ type: "Products", id: "LIST" }]
         }),
         update: builder.mutation<IProd, IProd>({
             query: ({id, ...payload}) => ({
@@ -36,14 +41,14 @@ export const API = createApi({
                 method: "PUT",
                 body: payload
             }),
-            invalidatesTags: ["Products"]
+            invalidatesTags: [{ type: "Products", id: "LIST" }]
         }),
         delete: builder.mutation<void, number>({
             query: (id) => ({
                 url: `/${id}`,
                 method: "DELETE"
             }),
-            invalidatesTags: ["Products"]
+            invalidatesTags: [{ type: "Products", id: "LIST" }]
         })
     })
 });
