@@ -12,7 +12,7 @@ class ProdClass {
             const values = [P.name, P.description, 
                 P.image, P.price, P.stock];
             const product = await dBase.query<ProdSType>(QRY, values);
-            res
+            return res
                 .status(res.statusCode)
                 .json({
                     success: true,
@@ -20,14 +20,15 @@ class ProdClass {
                     data: product.rows[0]
                 });
         } catch (error) {
-            res.status(res.statusCode)
+            res
+                .status(res.statusCode)
                 .json({
                     success: false,
                     message: "Error retrieving Products!",
                     error: error instanceof Error ? 
                         error.message : "Unknown error!"
                 });
-             next(error);
+            return next(error)
         }
     };
 
@@ -35,21 +36,23 @@ class ProdClass {
         try {
             const QRY = `SELECT * FROM products ORDER BY id ASC`;
             const products = await dBase.query<ProdSType[]>(QRY);
-            res.status(res.statusCode)
+            return res
+                .status(res.statusCode)
                 .json({
                     success: true,
                     count: products.rows.length,
                     data: products.rows
                 });
         } catch (error) {
-            res.status(res.statusCode)
+            res
+                .status(res.statusCode)
                 .json({
                     success: false,
                     message: "Error retrieving Products!",
                     error: error instanceof Error ? 
                         error.message : "Unknown error!"
                 });
-            next(error);
+            return next(error);
         }
     };
 
@@ -59,20 +62,22 @@ class ProdClass {
             const QRY = `SELECT * FROM products WHERE id = $1`;
             const values = [id];
             const product = await dBase.query<ProdSType>(QRY, values);
-            res.status(res.statusCode)
+            return res
+                .status(res.statusCode)
                 .json({
                     success: true,
                     data: product.rows[0]
                 });
         } catch (error) {
-            res.status(res.statusCode)
+            res
+                .status(res.statusCode)
                 .json({
                     success: false,
                     message: "Error retrieving Products!",
                     error: error instanceof Error ? 
                         error.message : "Unknown error!"
                 });
-            next(error);
+            return next(error);
         }
     };
 
@@ -87,21 +92,23 @@ class ProdClass {
             const values = [P.name, P.description, 
                 P.image, P.price, P.stock, id];
             const product = await dBase.query<ProdSType>(QRY, values);
-            res.status(res.statusCode)
+            return res
+                .status(res.statusCode)
                 .json({
                     success: true,
                     message: "Product Updated!",
                     data: product.rows[0]
                 });
         } catch (error) {
-            res.status(res.statusCode)
+            res
+                .status(res.statusCode)
                 .json({
                     success: false,
                     message: "Error retrieving Products!",
                     error: error instanceof Error ? 
                         error.message : "Unknown error!"
                 });
-            next(error);
+            return next(error);
         }
     };
 
@@ -111,7 +118,7 @@ class ProdClass {
             const QRY = "DELETE FROM products WHERE id = $1";
             const values = [id];
             const deleteProduct = await dBase.query<ProdSType>(QRY, values);
-            res
+            return res
                 .status(res.statusCode)
                 .json({
                     success: true,
@@ -119,14 +126,15 @@ class ProdClass {
                     data: deleteProduct
                 });
         } catch (error) {
-            res.status(res.statusCode)
+            res
+                .status(res.statusCode)
                 .json({
                     success: false,
                     message: "Error retrieving Products!",
                     error: error instanceof Error ? 
                         error.message : "Unknown error!"
                 });
-            next(error);
+            return next(error);
         }
     };
 };
