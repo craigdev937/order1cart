@@ -24,8 +24,7 @@ export const API = createApi({
                 url: `/${id}`,
                 method: "GET"
             }),
-            providesTags: (result, error, id) =>
-                [{ type: "Products", id }]
+            providesTags: ["Products"]
         }),
         add: builder.mutation<IProd, IProd>({
             query: (payload) => ({

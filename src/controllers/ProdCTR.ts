@@ -64,10 +64,7 @@ class ProdClass {
             const product = await dBase.query<ProdSType>(QRY, values);
             return res
                 .status(res.statusCode)
-                .json({
-                    success: true,
-                    data: product.rows[0]
-                });
+                .json(product.rows[0]);
         } catch (error) {
             res
                 .status(res.statusCode)
@@ -94,11 +91,7 @@ class ProdClass {
             const product = await dBase.query<ProdSType>(QRY, values);
             return res
                 .status(res.statusCode)
-                .json({
-                    success: true,
-                    message: "Product Updated!",
-                    data: product.rows[0]
-                });
+                .json(product.rows[0]);
         } catch (error) {
             res
                 .status(res.statusCode)

@@ -67,6 +67,7 @@ export const Products = () => {
                                 <section className="prod__actions">
                                     <button
                                         className="btn btn__small btn__sec"
+                                        onClick={() => navigate(`/pinfo/${prod.id}`)}
                                         >View
                                     </button>
                                     <button

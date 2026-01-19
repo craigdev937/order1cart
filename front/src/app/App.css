@@ -28,9 +28,9 @@ body {
     min-height: 100vh;
 }
 
-main {
+/* main {
     min-height: 70vh;
-}
+} */
 
 .btn {
     padding: 0.75rem 2rem;
