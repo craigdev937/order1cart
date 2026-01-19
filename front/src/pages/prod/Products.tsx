@@ -72,6 +72,7 @@ export const Products = () => {
                                     </button>
                                     <button
                                         className="btn btn__small btn__sec"
+                                        onClick={() => navigate(`/pedit/${prod.id}`)}
                                         >Edit
                                     </button>
                                     <button

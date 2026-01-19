@@ -50,6 +50,21 @@ export const ProdInfo = () => {
                             />
                         </div>
                     </aside>
+
+                    <aside className="pinfo__buttons">
+                        <button 
+                            className="btn btn__sec"
+                            onClick={() => navigate("/")}
+                        >
+                            Back to List
+                        </button>
+                        <button 
+                            className="btn btn__sec"
+                            onClick={() => navigate(`/pedit/${IN.id}`)}
+                        >
+                            Edit Product
+                        </button>
+                    </aside>
                 </section>
             </main>
         )}

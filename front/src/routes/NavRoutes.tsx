@@ -4,6 +4,7 @@ import { createBrowserRouter,
 import { NotFound } from "../components/NotFound";
 import { Navbar } from "./Navbar";
 import { AddProd } from "../containers/add/AddProd";
+import { PEdit } from "../containers/edit/PEdit";
 import { ProdInfo } from "../containers/info/ProdInfo";
 import { Products } from "../pages/prod/Products";
 import { Customers } from "../pages/customers/Customers";
@@ -25,6 +26,10 @@ const RouteList = createBrowserRouter([
             {
                 path: "/pinfo/:id",
                 element: <ProdInfo />
+            },
+            {
+                path: "/pedit/:id",
+                element: <PEdit />
             },
             {
                 path: "/customers",

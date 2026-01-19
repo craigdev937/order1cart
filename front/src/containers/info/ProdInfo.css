@@ -1,7 +1,19 @@
+/* Container Query Setup */
+.pinfo__container {
+    container-type: inline-size;
+    container-name: product-info;
+}
+
+/* Main Container - CSS Grid */
 .pinfo__container {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 2rem;
     animation: fadeIn 0.6s ease;
 }
 
@@ -16,11 +28,202 @@
     }
 }
 
+.pinfo__container h2 {
+    grid-column: 1 / -1;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--text-primary);
+    border-left: 6px solid var(--accent);
+    padding-left: 1rem;
+    animation: slideInLeft 0.5s ease;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    } 
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* View Section - CSS Grid with Subgrid */
 .pinfo__view {
     background: var(--hover);
     border: 3px solid var(--border);
     padding: 2rem;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+    grid-template-rows: repeat(auto-fit, minmax(auto, 1fr));
+    gap: 1.5rem;
     animation: scaleIn 0.4s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Field Items - Using Grid for label/value layout */
+.pinfo__field {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.pinfo__field:last-of-type {
+    border-bottom: none;
+}
+
+.pinfo__label {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.pinfo__value {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    word-wrap: break-word;
+}
+
+/* Image Container */
+.pinfo__img {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.pinfo__img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+/* Buttons - Flexbox within Grid */
+.pinfo__buttons {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Container Queries for Responsive Design */
+@container product-info (min-width: 768px) {
+    .pinfo__view {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2rem;
+    }
+
+    .pinfo__field:nth-child(3n+1) {
+        grid-column: 1 / -1;
+    }
+
+    .pinfo__img {
+        grid-column: 1 / -1;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .pinfo__buttons {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+    }
+}
+
+@container product-info (min-width: 1024px) {
+    .pinfo__view {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .pinfo__field {
+        grid-column: span 1;
+    }
+
+    .pinfo__field:nth-child(1) {
+        grid-column: 1 / 2;
+    }
+
+    .pinfo__field:nth-child(2) {
+        grid-column: 2 / 4;
+    }
+
+    .pinfo__field:nth-child(3) {
+        grid-column: 1 / 2;
+    }
+
+    .pinfo__img {
+        grid-column: 2 / 4;
+        max-width: 100%;
+    }
+
+    .pinfo__buttons {
+        grid-column: 1 / -1;
+    }
+}
+
+@container product-info (max-width: 767px) {
+    .pinfo__container {
+        padding: 2rem 1rem;
+    }
+
+    .pinfo__container h2 {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+    }
+
+    .pinfo__view {
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+
+    .pinfo__field {
+        padding-bottom: 1rem;
+    }
+
+    .pinfo__value {
+        font-size: 1rem;
+    }
+
+    .pinfo__buttons {
+        flex-direction: column;
+    }
+
+    .pinfo__buttons button {
+        width: 100%;
+    }
+}
+
+@container product-info (max-width: 480px) {
+    .pinfo__container {
+        padding: 1.5rem 1rem;
+    }
+
+    .pinfo__container h2 {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        padding-left: 0.75rem;
+        border-left-width: 4px;
+    }
+
+    .pinfo__view {
+        padding: 1rem;
+    }
 }
 
 
