@@ -7,6 +7,7 @@ import { Spinner } from "../../components/spin/Spinner";
 export const Products = () => {
     const navigate = useNavigate();
     const { error, isLoading, data } = API.useGetQuery();
+    const [deleteProduct] = API.useDeleteMutation();
     const PR = data?.data;
 
     if (error) {
@@ -17,6 +18,12 @@ export const Products = () => {
             return <h1>Error: {errMSG}</h1>
         } else {
             return <h1>Error: {error.message}</h1>
+        }
+    };
+
+    const handleDelete = async (id: string) => {
+        if (window.confirm("Delete this Product?")) {
+            await deleteProduct(id);
         }
     };
 
@@ -77,6 +84,7 @@ export const Products = () => {
                                     </button>
                                     <button
                                         className="btn btn__small btn__sec"
+                                        onClick={() => handleDelete(prod.id)}
                                         >Delete
                                     </button>
                                 </section>

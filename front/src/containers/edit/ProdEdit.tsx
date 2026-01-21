@@ -9,7 +9,7 @@ import { Spinner } from "../../components/spin/Spinner";
 export const ProdEdit = () => {
     const navigate = useNavigate();
     const { id } = useParams();
-    const PID = id !== undefined ? Number(id) : 0;
+    const PID = id !== undefined ? String(id) : "";
     const [updateProduct] = API.useUpdateMutation();
     const { error, isLoading, 
         data: product } = API.useOneQuery(PID);

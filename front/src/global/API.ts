@@ -19,12 +19,13 @@ export const API = createApi({
                 { type: "Products", id: "LIST" },
             ] : [{ type: "Products", id: "LIST" }]
         }),
-        one: builder.query<IProd, number>({
+        one: builder.query<IProd, string>({
             query: (id) => ({
                 url: `/${id}`,
                 method: "GET"
             }),
-            providesTags: ["Products"]
+            providesTags: (result, error, id) =>
+                [{ type: "Products", id }]
         }),
         add: builder.mutation<IProd, IProd>({
             query: (payload) => ({
@@ -42,7 +43,7 @@ export const API = createApi({
             }),
             invalidatesTags: [{ type: "Products", id: "LIST" }]
         }),
-        delete: builder.mutation<void, number>({
+        delete: builder.mutation<void, string>({
             query: (id) => ({
                 url: `/${id}`,
                 method: "DELETE"
