@@ -1,0 +1,326 @@
+/* ===================================
+   Product Info - Responsive Layout
+   Using: CSS Grid, Clamp, Subgrid, Container Queries
+   =================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
+:root {
+    --color-surface: #ffffff;
+    --color-text: #2c3e50;
+    --color-text-muted: #7f8c8d;
+    --color-border: #e0e0e0;
+    
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    
+    --spacing-xs: clamp(0.25rem, 1vw, 0.5rem);
+    --spacing-sm: clamp(0.5rem, 2vw, 1rem);
+    --spacing-md: clamp(1rem, 3vw, 1.5rem);
+    --spacing-lg: clamp(1.5rem, 4vw, 2.5rem);
+    --spacing-xl: clamp(2rem, 5vw, 4rem);
+    
+    --border-radius: clamp(0.5rem, 1vw, 0.75rem);
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Container Query Setup */
+.pinfo__container {
+    container-type: inline-size;
+    container-name: product-info;
+    
+    min-height: 100vh;
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--blue) 100%);
+    font-family: var(--font-body);
+    color: var(--color-text);
+}
+
+.pinfo__container h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: var(--spacing-lg);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+/* Main Grid Layout */
+.pinfo__view {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--spacing-md);
+    max-width: 1400px;
+    margin: 0 auto;
+    background: var(--text-secondary);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    box-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.05),
+        0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Field Base Styles */
+.pinfo__field {
+    display: grid;
+    grid-template-columns: subgrid;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    border-radius: calc(var(--border-radius) * 0.75);
+    background: linear-gradient(to bottom right, var(--blue), var(--pink));
+    border: 1px solid var(--color-border);
+    transition: all var(--transition);
+}
+
+.pinfo__field:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--secondary);
+}
+
+.pinfo__label {
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-xs);
+}
+
+.pinfo__value {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* Image Container */
+/* .pinfo__img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+    position: relative;
+} */
+
+.pinfo__img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform var(--transition);
+}
+
+.pinfo__img:hover img {
+    transform: scale(1.05);
+}
+
+/* Buttons Section */
+.pinfo__buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+/* ===================================
+   Container Queries - Responsive Layout
+   =================================== */
+
+/* Extra Small: < 400px */
+@container product-info (max-width: 400px) {
+    .pinfo__view {
+        padding: var(--spacing-md);
+    }
+    
+    .pinfo__field {
+        grid-column: 1 / -1;
+    }
+    
+    .pinfo__buttons {
+        grid-column: 1 / -1;
+        flex-direction: column;
+    }
+    
+    .btn {
+        min-width: 100%;
+    }
+}
+
+/* Small: 400px - 640px */
+@container product-info (min-width: 400px) and (max-width: 640px) {
+    .pinfo__field {
+        grid-column: 1 / -1;
+    }
+    
+    .pinfo__buttons {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Medium: 640px - 900px */
+@container product-info (min-width: 640px) and (max-width: 900px) {
+    .pinfo__field:nth-child(1),
+    .pinfo__field:nth-child(2) {
+        grid-column: 1 / -1;
+    }
+    
+    .pinfo__field:nth-child(3) {
+        grid-column: 1 / 7;
+    }
+    
+    .pinfo__field:nth-child(4) {
+        grid-column: 7 / -1;
+    }
+    
+    .pinfo__buttons {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Large: 900px - 1200px */
+@container product-info (min-width: 900px) and (max-width: 1200px) {
+    .pinfo__field:nth-child(1) {
+        grid-column: 1 / 8;
+    }
+    
+    .pinfo__field:nth-child(2) {
+        grid-column: 1 / 8;
+    }
+    
+    .pinfo__field:nth-child(3) {
+        grid-column: 1 / 8;
+    }
+    
+    .pinfo__field:nth-child(4) {
+        grid-column: 8 / -1;
+        grid-row: 1 / 4;
+    }
+    
+    .pinfo__buttons {
+        grid-column: 1 / 8;
+    }
+}
+
+/* Extra Large: > 1200px */
+@container product-info (min-width: 1200px) {
+    .pinfo__view {
+        gap: var(--spacing-lg);
+    }
+    
+    .pinfo__field:nth-child(1) {
+        grid-column: 1 / 7;
+    }
+    
+    .pinfo__field:nth-child(2) {
+        grid-column: 1 / 7;
+    }
+    
+    .pinfo__field:nth-child(3) {
+        grid-column: 1 / 7;
+    }
+    
+    .pinfo__field:nth-child(4) {
+        grid-column: 7 / -1;
+        grid-row: 1 / 5;
+    }
+    
+    .pinfo__buttons {
+        grid-column: 1 / 7;
+    }
+}
+
+/* ===================================
+   Additional Responsive Enhancements
+   =================================== */
+
+/* Typography Scaling */
+@container product-info (min-width: 900px) {
+    .pinfo__label {
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+    }
+    
+    .pinfo__value {
+        font-size: clamp(1.125rem, 1.8vw, 1.5rem);
+    }
+}
+
+/* Enhanced Image on Larger Screens */
+@container product-info (min-width: 1200px) {
+    .pinfo__img {
+        aspect-ratio: 4 / 5;
+        box-shadow: 
+            0 10px 30px rgba(0, 0, 0, 0.1),
+            0 1px 8px rgba(0, 0, 0, 0.06);
+    }
+}
+
+/* Button Layout Adjustments */
+@container product-info (min-width: 900px) {
+    .pinfo__buttons {
+        gap: var(--spacing-lg);
+    }
+}
+
+/* ===================================
+   Animations & Micro-interactions
+   =================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pinfo__view {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pinfo__field {
+    animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+.pinfo__field:nth-child(1) { animation-delay: 0.1s; }
+.pinfo__field:nth-child(2) { animation-delay: 0.2s; }
+.pinfo__field:nth-child(3) { animation-delay: 0.3s; }
+.pinfo__field:nth-child(4) { animation-delay: 0.4s; }
+.pinfo__buttons { animation-delay: 0.5s; }
+
+/* Focus States for Accessibility */
+.btn:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .pinfo__container {
+        background: white;
+        padding: 0;
+    }
+    
+    .pinfo__buttons {
+        display: none;
+    }
+    
+    .pinfo__view {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+}

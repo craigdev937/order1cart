@@ -4,7 +4,7 @@ import { createBrowserRouter,
 import { NotFound } from "../components/NotFound";
 import { Navbar } from "./Navbar";
 import { AddProd } from "../containers/add/AddProd";
-import { PEdit } from "../containers/edit/PEdit";
+import { ProdEdit } from "../containers/edit/ProdEdit";
 import { ProdInfo } from "../containers/info/ProdInfo";
 import { Products } from "../pages/prod/Products";
 import { Customers } from "../pages/customers/Customers";
@@ -29,7 +29,7 @@ const RouteList = createBrowserRouter([
             },
             {
                 path: "/pedit/:id",
-                element: <PEdit />
+                element: <ProdEdit />
             },
             {
                 path: "/customers",

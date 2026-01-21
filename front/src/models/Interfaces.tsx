@@ -7,7 +7,7 @@ export interface IData {
 };
 
 export interface IProd extends IData {
-    id: number,
+    id: number | string,
 }
 
 export interface IProduct extends IProd {

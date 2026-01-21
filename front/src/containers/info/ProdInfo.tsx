@@ -26,6 +26,8 @@ export const ProdInfo = () => {
         <React.Fragment>
         {isLoading ? (
             <Spinner />
+        ) : !pinfo ? (
+            <h1>Product not Found!</h1>
         ) : (
             <main className="pinfo__container">
                 <h2>View Product</h2>
