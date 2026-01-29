@@ -34,10 +34,10 @@ export const Products = () => {
             ) : (
                 <main className="prod__container">
                     <button
-                            className="btn btn__small btn__sec"
-                            onClick={() => navigate("/addprod")}
-                            >Add Product
-                        </button>
+                        className="btn btn__small btn__sec"
+                        onClick={() => navigate("/addprod")}
+                        >Add Product
+                    </button>
                     <section className="prod__grid">
                         {PR && PR.map((prod) => (
                             <aside 

@@ -2,14 +2,13 @@ import "./AddProd.css";
 import { useNavigate } from "react-router";
 import { Form } from "../form/Form";
 import { API } from "../../global/API";
-import { IProd } from "../../models/Interfaces";
-import { ProdSType } from "../../validation/Schema";
+import { IData } from "../../models/Interfaces";
 
 export const AddProd = () => {
     const navigate = useNavigate();
     const [addProduct] = API.useAddMutation();
 
-    const handleAdd = async (data: ProdSType) => {
+    const handleAdd = async (data: IData) => {
         await addProduct(data);
         console.log(data);
         navigate("/");
